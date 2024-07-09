@@ -1,6 +1,6 @@
 @extends("app")
 @section("tittle")
-  Login
+  Iniciar Sesión
 @endsection
 @section("auth")
   <div class="bg-image flex justify-center items-center">
