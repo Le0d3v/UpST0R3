@@ -32,7 +32,7 @@
   @endif
   <div class="p-2 w-full">
     <table class="p-1 border-none w-full mb-10">
-      <h1 class="mt-3 mb-6 uppercase font-inter text-pink-500 font-bold">Proveedores Registrados:</h1>
+      <h1 class="mt-3 mb-3 uppercase font-inter text-pink-500 font-bold">Proveedores Registrados:</h1>
       <thead class="p-3 bg-pink-700 text-white font-bold">
         <th class="p-2">ID</th>
         <th class="p-2">Nombre</th>
@@ -53,13 +53,13 @@
                 <div class="text-center">
                   <a 
                     href="{{route("providers.edit", $provider->id)}}" 
-                    class="bg-blue-500 p-1 text-white rounded text-xl mr-1" 
+                    class="bg-blue-500 p-1 text-white rounded text-xl mr-1 hover:bg-blue-700" 
                     title="Editar"
                   >
                     <i class="fa-solid fa-pen-to-square"></i>
                   </a>
                   <button 
-                    class="bg-red-500 text-white rounded py-1 px-2 ml-1 text-xl" 
+                    class="bg-red-500 text-white rounded py-1 px-2 ml-1 text-xl hover:bg-red-700" 
                     title="Eliminar" 
                     onclick="eliminar({{$provider->id}})"
                   >

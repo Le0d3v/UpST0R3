@@ -50,7 +50,7 @@
                 @endif"
             >
               <i class="fa-solid fa-box"></i>
-              <span>Almacen</span>
+              <span>Inventario</span>
             </a>
             <a 
               href="{{route("reports")}}" 

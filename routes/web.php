@@ -17,7 +17,10 @@ Route::get('/logout', [AdminController::class, "logout"])->name("logout");
 
 Route::get('/dashboard', [AdminController::class, "index"])->name("admin");
 
+// Storage
 Route::get('/dashboard/storage', [StorageController::class, "index"])->name("storage");
+Route::get('/dashboard/storage/create', [StorageController::class, "create"])->name("storage.create");
+
 
 Route::get('/dashboard/reports', [ReportsContoller::class, "index"])->name("reports");
 
@@ -27,5 +30,4 @@ Route::get('/dashboard/providers/create', [ProviderController::class, "create"])
 Route::post('/dashboard/providers/create', [ProviderController::class, "store"])->name("providers.store");
 Route::get('/dashboard/providers/edit/{provider}', [ProviderController::class, "edit"])->name("providers.edit");
 Route::put('/dashboard/providers/edit/{id}', [ProviderController::class, "update"])->name("providers.update");
-Route::delete('/providers/delete/{id}/', [APIController::class, "delete_provider"])->name("providers.delete");
-
+Route::delete('/providers/delete/{id}/', [ProviderController::class, "delete"])->name("providers.delete");
