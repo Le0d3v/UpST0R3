@@ -19,6 +19,13 @@ class StorageController extends Controller
         ]);
     }
 
+    public function show(Product $product) {
+        return view("admin.storage.show", [
+            "page" => "storage",
+            "product" => $product
+        ]);
+    }
+
     /**
      * 
      */
@@ -44,9 +51,44 @@ class StorageController extends Controller
             "unities" => $request->unities,
             "image" => $request->image,
             "category_id" => $request->category_id,
-            "provider_id" => $request->provider_id
+            "provider_id" => $request->provider_id,
+            "total_price" => $request->total_price
         ]);
 
         return redirect()->route("storage")->with("message", "Producto Registrado Correctamente");
+    }
+
+    public function edit($id) {
+        $product = Product::find($id);
+
+        return view("admin.storage.edit", [
+            "page" => "storage",
+            "product" => $product,
+            "categories" => Category::all(),
+            "providers" => Provider::all(),
+        ]);
+    }
+
+    public function update(Request $request, $id) {
+        $product = Product::findOrFail($id);
+        $product->update([
+            "name" => $request->name,
+            "unities" => $request->unities,
+            "image" => $request->image,
+            "category_id" => $request->category_id,
+            "provider_id" => $request->provider_id,
+            "total_price" => $request->total_price
+        ]);
+
+        return redirect()->route("storage")->with("message", "Producto Actualizado Correctamente");
+    }   
+
+    public function delete($id) {
+        $product = Product::find($id);
+        $product->delete();
+        
+        return response()->json([
+            'message' => 'Registro eliminado exitosamente'
+        ], 200);
     }
 }

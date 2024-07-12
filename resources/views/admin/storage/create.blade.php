@@ -53,7 +53,7 @@
     </div> 
     <div class="p-3 bg-white rounded-none shadow-lg w-1/2">
       <form 
-        action=""
+        action="{{route("storage.store")}}"
         method="POST"
       > 
         @csrf
