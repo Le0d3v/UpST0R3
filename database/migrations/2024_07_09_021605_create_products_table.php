@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("image");
             $table->integer("unities");
+            $table->integer("total_price");
             $table->foreignId("provider_id")->constrained();
             $table->foreignId("category_id")->constrained();
             $table->timestamps();

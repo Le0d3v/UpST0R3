@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Provider;
+use App\Models\Report;
 use Illuminate\Http\Request;
 
 class ProviderController extends Controller
@@ -45,6 +46,11 @@ class ProviderController extends Controller
             "email" => $request->email,
         ]);
 
+        Report::create([
+            "title" => "Registro de nuevo Proveedor",
+            "message" => "Se ha registrado un nuevo proveedor. El nuevo proveedor es " . $request->name . " de la compañía " . $request->company . "."
+        ]);
+
         return redirect()->route("providers")->with('message', 'Proveedor Registrado Correctamente.');
     }
 
@@ -62,6 +68,7 @@ class ProviderController extends Controller
      * Update provider's data
      */
     public function update(Request $request, $id) {
+
         $request->validate([
             "name" => "required",
             "company" => "required",
@@ -70,11 +77,17 @@ class ProviderController extends Controller
         ]);
 
         $provider = Provider::findOrFail($id);
+
         $provider->update([
             "name" => $request->input("name"),
             "company" => $request->input("company"),
             "telephone" => $request->input("telephone"),
             "email" => $request->input("email"),
+        ]);
+
+        Report::create([
+            "title" => "Actualización de Proveedor",
+            "message" => "Se actualizó la información del provedor $request->name de $request->company."
         ]);
         
         return redirect()->route("providers")->with('message', 'Información Actualizada Correctamente.');
@@ -85,7 +98,14 @@ class ProviderController extends Controller
      */
     function delete($id) {
         $user = Provider::find($id);
+
+        Report::create([
+            "title" => "Eliminación de Proveedor",
+            "message" => "Se eliminó al proveedor ($user->name de $user->company)."
+        ]);
+
         $user->delete();
+
         
         return response()->json([
             'message' => 'Registro eliminado exitosamente'

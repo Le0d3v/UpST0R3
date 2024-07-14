@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Report;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Provider;
 use Illuminate\Http\Request;
 
@@ -51,8 +52,12 @@ class StorageController extends Controller
             "unities" => $request->unities,
             "image" => $request->image,
             "category_id" => $request->category_id,
-            "provider_id" => $request->provider_id,
-            "total_price" => $request->total_price
+            "provider_id" => $request->provider_id
+        ]);
+
+        Report::create([
+            "title" => "Registro de Nuevo Producto",
+            "message" => "Se ha registrado un nuevo Producto. El nuevo producto es " . $request->name . " con $request->unities unidades."
         ]);
 
         return redirect()->route("storage")->with("message", "Producto Registrado Correctamente");
@@ -80,11 +85,22 @@ class StorageController extends Controller
             "total_price" => $request->total_price
         ]);
 
+        Report::create([
+            "title" => "Actualización de Producto",
+            "message" => "Se actualizó la información del Producto $product->name."
+        ]);
+
         return redirect()->route("storage")->with("message", "Producto Actualizado Correctamente");
     }   
 
     public function delete($id) {
         $product = Product::find($id);
+
+        Report::create([
+            "title" => "Eliminación de Producto",
+            "message" => "Se eliminó el producto $product->name de la plataforma."
+        ]);
+        
         $product->delete();
         
         return response()->json([

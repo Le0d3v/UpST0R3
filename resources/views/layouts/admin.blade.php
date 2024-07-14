@@ -53,6 +53,16 @@
               <span>Inventario</span>
             </a>
             <a 
+              href="{{route("providers")}}" 
+              class="flex items-center space-x-2 text-lg p-1 text-gray-400 hover:text-white pl-2 hover:bg-gray-800 rounded
+              @if ($page == "providers")
+                {{"bg-gray-800 text-white border-l-4 border-blue-500"}}
+              @endif"
+          >
+            <i class="fa-solid fa-truck-front"></i>
+            <span>Proveedores</span>
+          </a>  
+            <a 
               href="{{route("reports")}}" 
               class="flex items-center space-x-2 text-lg p-1 text-gray-400 hover:text-white pl-2 hover:bg-gray-800 rounded
                 @if ($page == "reports")
@@ -60,18 +70,8 @@
                 @endif"
             >
               <i class="fa-solid fa-clipboard-list"></i>
-              <span>Reportes</span>
+              <span>Bitácora</span>
             </a>
-            <a 
-              href="{{route("providers")}}" 
-              class="flex items-center space-x-2 text-lg p-1 text-gray-400 hover:text-white pl-2 hover:bg-gray-800 rounded
-                @if ($page == "providers")
-                  {{"bg-gray-800 text-white border-l-4 border-blue-500"}}
-                @endif"
-            >
-              <i class="fa-solid fa-truck-front"></i>
-              <span>Proveedores</span>
-            </a>  
           </div>
         </div>
       </div>

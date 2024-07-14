@@ -99,27 +99,4 @@
   <div>
     <input type="hidden" name="image" id="imageProduct" value="{{$product->image ?? old("image")}}">
   </div>
-  <div class="w-full mt-3">
-    <label for="total_price" class="font-bold text-gray-500">
-      Total
-    </label>
-    <p>Ingrese la cantidad total a pagar (Tomando en cuenta todas las unidades)</p>
-    @error("total_price")
-      <p class="p-2 mb-1 font-bold text-white uppercase bg-red-500 border-l-8 border-red-700 rounded font-inter">
-        <i class="fa-solid fa-circle-xmark"></i>
-        {{$message}}
-      </p>
-    @enderror
-    <input 
-      type="number" 
-      min="1"
-      name="total_price" 
-      id="total_price"
-      value="{{$product->total_price ?? old("total_price")}}"
-      placeholder="Cantidad de Productos (1 - n)"
-      class="p-2 w-full border-solid border-2 border-gray-300 rounded mt-1 @error("name")
-        border-red-400
-      @enderror"
-    >
-  </div>
 </fieldset>

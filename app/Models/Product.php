@@ -15,8 +15,7 @@ class Product extends Model
         "unities",
         "image",
         "provider_id",
-        "category_id",
-        "total_price"
+        "category_id"
     ];
 
     public function provider() {
