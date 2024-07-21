@@ -75,7 +75,7 @@
           </div>
         </div>
       </div>
-      <div class="flex-1 justify-center p-6 w-full m-0 overflow-y-auto"> <!-- Contenido principal -->
+      <div class="flex-1 justify-center p-3 w-full m-0 overflow-y-auto"> <!-- Contenido principal -->
         @yield('admin-content')
       </div>
     </div>

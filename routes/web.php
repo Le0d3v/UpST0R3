@@ -11,9 +11,12 @@ use App\Http\Controllers\ReportsContoller;
 use App\Http\Controllers\StorageController;
 use App\Http\Controllers\UsersController;
 
+// Login
 Route::get('/', [AuthController::class, "index"])->name("login");
 Route::post('/', [AuthController::class, "store"])->name("login.store");
 Route::get('/logout', [AdminController::class, "logout"])->name("logout");
+
+// Admin
 Route::get('/dashboard', [AdminController::class, "index"])->name("admin");
 
 // Products
@@ -24,7 +27,9 @@ Route::post('/dashboard/storage/create', [StorageController::class, "store"])->n
 Route::get('/dashboard/storage/edit/{id}', [StorageController::class, "edit"])->name("storage.edit");
 Route::put('/dashboard/storage/edit/{id}', [StorageController::class, "update"])->name("storage.update");
 Route::delete('/storage/delete/{id}', [StorageController::class, "delete"])->name("storage.delete");
+Route::get('api/products', [AdminController::class, "getProducts"])->name("storage.products");
 
+//Reports
 Route::get('/dashboard/reports', [ReportsContoller::class, "index"])->name("reports");
 
 // Providers

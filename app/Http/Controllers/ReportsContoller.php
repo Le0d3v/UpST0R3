@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Report;
 use Illuminate\Http\Request;
 

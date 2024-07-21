@@ -12,6 +12,18 @@
     <p class="flex justify-center mt-3 text-gray-400 font-inter">
         Visualice todas las operaciones realizadas en UpStore
     </p>
+    <div class="flex justify-between">
+        <div class="w-full flex justify-start pl-10">
+            <h1 class="text-3xl text-gray-300 font-inter font-bold">
+                Proceso
+            </h1>
+        </div>
+        <div class="w-full flex justify-end">
+            <h1 class="text-3xl text-gray-300 font-inter font-bold">
+                Fecha y Hora
+            </h1>
+        </div>
+    </div>
     <div class="w-full p-3">
         @foreach ($reports as $report)
             <div class="p-3 border-b-2">
