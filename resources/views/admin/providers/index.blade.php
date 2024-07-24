@@ -28,9 +28,20 @@
       </div>
     </div>
   @endif
+  <div class="flex justify-between items-center">
+    <h1 class="mt-3 mb-6 font-bold text-pink-500 uppercase font-inter">
+      Productos y Elementos existentes:
+    </h1>
+    <form action="{{route("providers")}}" method="GET" class="flex items-center">
+      <input type="text" name="query" placeholder="Buscar Proveedor" value="{{$search ?? ""}}" class="border-solid border-2 p-2">
+      <div class="bg-gray-300 px-1 hover:cursor-pointer py-2 hover:bg-gray-400">
+        <i class="fa-solid fa-search"></i>
+        <input type="submit" value="Buscar" class="cursor-pointer">
+      </div>
+    </form>
+  </div>
   <div class="w-full p-2">
     <table class="w-full p-1 mb-10 border-none">
-      <h1 class="mt-3 mb-3 font-bold text-pink-500 uppercase font-inter">Proveedores Registrados:</h1>
       <thead class="p-3 font-bold text-white bg-pink-700">
         <th class="p-2">ID</th>
         <th class="p-2">Nombre</th>
@@ -69,7 +80,9 @@
           @endforeach
       </tbody>
     </table>
-    {{$providers->links()}}
+    @if ($providers instanceof \Illuminate\Pagination\LengthAwarePaginator)
+      {{$providers->links()}}
+    @endif
   </div>
 
   <script>

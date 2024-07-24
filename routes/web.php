@@ -28,6 +28,8 @@ Route::get('/dashboard/storage/edit/{id}', [StorageController::class, "edit"])->
 Route::put('/dashboard/storage/edit/{id}', [StorageController::class, "update"])->name("storage.update");
 Route::delete('/storage/delete/{id}', [StorageController::class, "delete"])->name("storage.delete");
 Route::get('api/products', [AdminController::class, "getProducts"])->name("storage.products");
+Route::get('api/products', [AdminController::class, "getProducts"])->name("storage.products");
+
 
 //Reports
 Route::get('/dashboard/reports', [ReportsContoller::class, "index"])->name("reports");

@@ -11,10 +11,22 @@ class ProviderController extends Controller
     /** 
      * Show provider's index view
      */
-    public function index() {
+    public function index(Request $request) {
+        $query = $request->input("query");
+        if($query) {
+            $providers = Provider::where('name', 'LIKE', "%{$query}%")->get();
+            return view("admin.providers.index", [
+                "page" => "providers",
+                "providers" => $providers,
+                "search" => $query
+            ]);
+        } else {
+            $providers = Provider::paginate(10);
+        }
+
         return view("admin.providers.index", [
             "page" => "providers",
-            "providers" => Provider::paginate(10)
+            "providers" => $providers
         ]);
     }
 

@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="w-4/6 bg-gray-200 rounded-lg shadow-lg h-100">
-      <h1 class="p-1 text-2xl font-bold text-center font-inter">
+      <h1 class="p-1 text-lg font-bold text-center font-inter">
         División de Registros por Categroría
       </h1>
       <div class="p-2">

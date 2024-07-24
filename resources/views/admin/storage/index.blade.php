@@ -28,7 +28,18 @@
         </div>
       </div>
     @endif
-    <h1 class="mt-3 mb-6 font-bold text-pink-500 uppercase font-inter">Productos y Elementos existentes:</h1>
+    <div class="flex justify-between items-center">
+      <h1 class="mt-3 mb-6 font-bold text-pink-500 uppercase font-inter">
+        Productos y Elementos existentes:
+      </h1>
+      <form action="{{route("storage")}}" method="GET" class="flex items-center">
+        <input type="text" name="query" placeholder="Buscar Producto" value="{{$search ?? ""}}" class="border-solid border-2 p-2">
+        <div class="bg-gray-300 px-1 hover:cursor-pointer py-2 hover:bg-gray-400">
+          <i class="fa-solid fa-search"></i>
+          <input type="submit" value="Buscar" class="cursor-pointer">
+        </div>
+      </form>
+    </div>
     @if (count($products) < 0)
       <p class="text-center text-gray-400">
         Sin Registros Existentes
@@ -43,7 +54,12 @@
               <h2 class="text-2xl font-bold text-center text-pink-500 font-inter font-gray-400">
                 {{$product->name}}
               </h2>
-              <img src="{{asset("uploads/products/$product->image")}}" alt="imagenn-producto" class="mt-1">
+              <img 
+                src="{{asset("uploads/products/$product->image")}}" 
+                alt="imagenn-producto" 
+                class="mt-1"
+                loading="lazy"
+              >
               <div class="flex justify-between mt-3">
                 <p class="font-inter">{{$product->unities}} Unidades</p>
                 <p class="font-inter">{{$product->created_at->diffForHumans()}}</p>
@@ -79,10 +95,12 @@
                 </button>
               </div>
             </div>
-            </div>
+          </div>
         @endforeach
     </div>
-    {{$products->links()}}
+    @if ($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
+      {{$products->links()}}
+    @endif
     <script>
       const warning = document.querySelector("#warning");
       setTimeout(() => {

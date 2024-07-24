@@ -13,10 +13,22 @@ class StorageController extends Controller
     /**
      * Show storage's index view
      */
-    public function index() {
+    public function index(Request $request) {
+        $query = $request->input("query");
+        if($query) {
+            $products = Product::where('name', 'LIKE', "%{$query}%")->get();
+            return view("admin.storage.index", [
+                "page" => "storage",
+                "products" => $products,
+                "search" => $query
+            ]);
+        } else {
+            $products = Product::paginate(8);
+        }
+
         return view("admin.storage.index", [
             "page" => "storage",
-            "products" => Product::paginate(8)
+            "products" => $products
         ]);
     }
 
